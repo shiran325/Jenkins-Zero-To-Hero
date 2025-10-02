@@ -25,3 +25,4 @@ stage('Database') {
         sh 'oracle --version'
   }
 }
+}
