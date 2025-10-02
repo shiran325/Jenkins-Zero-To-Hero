@@ -18,11 +18,14 @@ pipeline {
             }
         }
         stage('Database') {
-            agent {
-                docker { image 'oracle:19c-alpine' }
-            }
-            steps {
-                sh 'oracle --version'
+    agent {
+        docker {
+            image 'oracle/database:19.3.0-ee'
+            args '-p 1521:1521 -p 5500:5500'
+        }
+    }
+    steps {
+        sh 'sqlplus -V'
             }
         }
     }
